@@ -1,0 +1,23 @@
+{
+  "name": "resume-visualized",
+  "version": "1.0.0",
+  "description": "May career visualized with d3.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dsandor/resume-visualized.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dsandor/resume-visualized/issues"
+  },
+  "homepage": "https://github.com/dsandor/resume-visualized#readme",
+  "dependencies": {
+    "lodash": "^4.14.1",
+    "moment": "^2.14.1"
+  }
+}

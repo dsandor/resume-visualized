@@ -1,0 +1,115 @@
+{
+    "experience": [
+        {"name": "C#", "start": "2001-01-01", "details_markdown_url": "details/CSharp.md", "tech_category": ".NET"},
+
+        {"name": "Visual Basic", "start": "1996-01-01", "end": "2001-06-1", "details_markdown_url": "details/Visual Basic.md", "tech_category": ".NET"},
+
+        {"name": "WPF (C#)", "start": "2007-01-01", "details_markdown_url": "details/WPF.md", "tech_category": ".NET"},
+        {"name": "Silverlight (C#)", "start": "2007-01-01", "end": "2010-09-01", "details_markdown_url": "details/Silverlight.md", "tech_category": ".NET"},
+        {"name": "WCF", "start": "2007-01-01", "details_markdown_url": "details/WCF.md", "tech_category": ".NET"},
+        {"name": "ASP (Legacy / VB Script)", "start": "1996-12-01", "end": "2002-01-01", "details_markdown_url": "details/ASP (Legacy).md", "tech_category": ".NET"},
+
+        {"name": "ASP.NET (C#)", "start": "2002-01-01", "details_markdown_url": "details/ASP.NET.md", "tech_category": ".NET"},
+        {"name": "ASP.NET MVC (WebApi) C#", "start": "2011-09-01", "details_markdown_url": "details/ASP.NET MVC (WebApi).md", "tech_category": ".NET"},
+        {"name": "SignalR C#/Javascript", "start": "2010-10-01", "details_markdown_url": "details/SignalR.md", "tech_category": ".NET"},
+        {"name": "Windows Services (C#)", "start": "2001-01-01", "details_markdown_url": "details/Windows Services.md", "tech_category": ".NET"},
+
+        {"name": "iOS (Swift)", "start": "2014-01-01", "end": "2015-06-01", "tech_category": "Mobile"},
+        {"name": "iOS (Objective-C)", "start": "2009-01-01", "end": "2011-01-01", "tech_category": "Mobile"},
+
+        {"name": "Android (Java)", "start": "2014-01-01", "tech_category": "Mobile"},
+        {"name": "react-native", "start": "2015-06-01", "tech_category": "Mobile"},
+
+        {"name": "Python", "start": "2015-10-01", "tech_category": "Backend"},
+        {"name": "NodeJS", "start": "2014-06-01", "tech_category": "Backend"},
+        {"name": "Socket.io", "start": "2016-01-01", "tech_category": "Backend"},
+        {"name": "ExpressJS", "start": "2015-01-01", "tech_category": "Backend"},
+
+        {"name": "HTML", "start": "1996-07-01", "tech_category": "Web"},
+        {"name": "CSS", "start": "2011-01-01", "tech_category": "Web"},
+        {"name": "AngularJS", "start": "2013-01-01", "tech_category": "Web"},
+        {"name": "Javascript", "start": "1996-07-01", "tech_category": "Web"},
+
+        {"name": "MS SQL Server (T-SQL)", "start": "1995-01-01", "tech_category": "DB"},
+        {"name": "PostgreSQL", "start": "2014-01-01", "tech_category": "DB"},
+        {"name": "MongoDB", "start": "2014-01-01", "tech_category": "DB"},
+
+        {"name": "C/C++", "start": "1991-01-01", "end": "1997-07-01", "tech_category": "Legacy"}
+
+    ],
+
+    "tech_categories": [
+        ".NET", "Mobile", "Backend", "Web", "DB", "Legacy"
+    ],
+
+    "notable_projects": [
+        {"name": "Fund Accounting", "technologies": [
+           {"name": "C#", "weight": 80 },
+           {"name": "WPF (C#)", "weight": 80 },
+           {"name": "WCF", "weight": 80 },
+           {"name": "SignalR C#/Javascript", "weight": 10 },
+           {"name": "Windows Services (C#)", "weight": 30 },
+           {"name": "Python", "weight": 5},
+           {"name": "NodeJS", "weight": 50},
+           {"name": "Socket.io", "weight": 50},
+           {"name": "ExpressJS", "weight": 50},
+           {"name": "CSS", "weight": 5},
+           {"name": "AngularJS", "weight": 35},
+           {"name": "Javascript", "weight": 60},
+           {"name": "MS SQL Server (T-SQL)", "weight": 80},
+           {"name": "MongoDB", "weight": 40},
+           {"name": "ASP.NET MVC (WebApi) C#", "weight": 70}
+        ]},
+        {"name": "Mobile Trading", "technologies": [
+           {"name": "Python", "weight": 25},
+           {"name": "NodeJS", "weight": 90},
+           {"name": "Socket.io", "weight": 50},
+           {"name": "ExpressJS", "weight": 90},
+           {"name": "Javascript", "weight": 90},
+           {"name": "MS SQL Server (T-SQL)", "weight": 40},
+           {"name": "MongoDB", "weight": 40},
+           {"name": "react-native", "weight": 70}
+        ]},
+      {"name": "Mobile Inventory", "technologies": [
+        {"name": "AngularJS", "weight": 50},
+        {"name": "NodeJS", "weight": 50},
+        {"name": "Socket.io", "weight": 50},
+        {"name": "ExpressJS", "weight": 90},
+        {"name": "Javascript", "weight": 90},
+        {"name": "PostgreSQL", "weight": 40},
+        {"name": "react-native", "weight": 70},
+        {"name": "Android (Java)", "weight": 70},
+        {"name": "iOS (Swift)", "weight": 70}
+
+      ]},
+      {"name": "RFID Inventory", "technologies": [
+        {"name": "WPF (C#)", "weight": 50},
+        {"name": "Javascript", "weight": 90},
+        {"name": "MS SQL Server (T-SQL)", "weight": 40},
+        {"name": "Silverlight (C#)", "weight": 70},
+        {"name": "WCF", "weight": 70},
+        {"name": "ASP.NET (C#)", "weight": 70},
+        {"name": "ASP.NET MVC (WebApi) C#", "weight": 70},
+        {"name": "Windows Services (C#)", "weight": 70},
+        {"name": "iOS (Objective-C)", "weight": 40}
+
+      ]},
+      {"name": "Casino Accounting", "technologies": [
+        {"name": "Javascript", "weight": 90},
+        {"name": "MS SQL Server (T-SQL)", "weight": 40},
+        {"name": "ASP.NET (C#)", "weight": 70},
+        {"name": "Visual Basic", "weight": 70},
+        {"name": "ASP (Legacy / VB Script)", "weight": 70},
+        {"name": "HTML", "weight": 70},
+        {"name": "CSS", "weight": 70},
+        {"name": "C/C++", "weight": 70}
+
+      ]}
+    ]
+}
+
+
+
+
+
+
