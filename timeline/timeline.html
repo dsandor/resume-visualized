@@ -1,0 +1,257 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title></title>
+
+  <style>
+
+
+  </style>
+
+  <script src="//visjs.org/dist/vis.js"></script>
+
+ <script src="https://code.jquery.com/jquery-1.8.2.min.js"></script>
+
+  <!-- Include jQuery Popup Overlay -->
+  <script src="https://cdn.rawgit.com/vast-engineering/jquery-popup-overlay/1.7.13/jquery.popupoverlay.js"></script>
+  <script src="http://softwaremaniacs.org/playground/showdown-highlight/showdown.js"></script>
+
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    .text-normal {
+      color: #000000;
+    }
+
+    .text-lowlight {
+      color: #263248;
+    }
+
+    .text-muted {
+      color: #7EBAA2;
+    }
+
+    .text-on-dark {
+      color: #FFFFFF;
+    }
+
+    .text-highlight {
+      color: #FF9800;
+    }
+
+    .background-dark {
+      background-color: #000000;
+    }
+
+    .background-lowlight {
+      background-color: #263248;
+    }
+
+    .background-muted {
+      background-color: #7EBAA2;
+    }
+
+    .background-bright {
+      background-color: #FFFFFF;
+    }
+
+    .background-highlight {
+      background-color: #FF9800;
+    }
+
+    .vis-item.sandor {
+        background-color: #7E8AA2;
+        border-color: #263248;
+        color: #fff;
+        font-size: 8pt !important;
+        font-weight: lighter;
+        font-family: arial !important;
+
+
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7abcff+0,60abf8+44,4096ee+100;Blue+3D+%2314 */
+        background: #7abcff; /* Old browsers */
+        background: -moz-linear-gradient(top,  #7abcff 0%, #60abf8 44%, #4096ee 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top,  #7abcff 0%,#60abf8 44%,#4096ee 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom,  #7abcff 0%,#60abf8 44%,#4096ee 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#4096ee',GradientType=0 ); /* IE6-9 */
+
+        text-shadow: 2px 2px 3px #000;
+
+      }
+
+    .vis-item.vis-box.sandor {
+        border-radius: 0;
+        border-width: 1px;
+        font-size: 8pt;
+        font-weight: bold;
+        font-family: arial !important;
+    }
+
+    .vis-item.vis-dot.sandor {
+      border-radius: 10px;
+      border-width: 10px;
+    }
+    .vis-label {
+      text-align: center;
+      display: flex;
+      align-items: center;
+    }
+    .vis-item.vis-line.sandor {
+      border-width: 5px;
+    }
+    .vis-item-content {
+      padding: 2px !important;
+    }
+    /* our custom classes overrule the styles for selected events,
+       so lets define a new style for the selected events */
+    .vis-item.vis-selected {
+      background-color: white;
+      border-color: black;
+      color: #fff;
+      box-shadow: 5px 5px 6px gray;
+      text-shadow: 2px 2px 3px #000;
+    }
+
+    /* For the popups. */
+    .well {
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        display:none;
+        margin:1em;
+    }
+
+    /* Also for popups. */
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    #visualization {
+      align-self: right;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+  </style>
+</head>
+<body>
+<p>
+  Technology Usage through my career..<div id="screen_resolution"></div>
+</p>
+
+<div style="text-align: center">
+  <div id="visualization"></div>
+</div>
+
+<div id="details_popup" class="well">
+  <div id="details_html"></div>
+</div>
+<script>
+
+/*
+  Some components borrowed from other developers:
+
+  Timeline: http://visjs.org/timeline_examples.html
+  jQuery Popup: http://dev.vast.com/jquery-popup-overlay/
+
+*/
+
+  var groups = new vis.DataSet([
+    {id: 0, content: '.NET', value: 1},
+    {id: 1, content: 'Mobile', value: 2},
+    {id: 2, content: 'Backend', value: 3},
+    {id: 3, content: 'Web Frontend', value: 4},
+    {id: 4, content: 'Database', value: 5, className: 'dark'}
+  ]);
+
+  // create a dataset with items
+  // note that months are zero-based in the JavaScript Date object, so month 3 is April
+  var index = -1;
+  var items = new vis.DataSet([
+    {id: index++, group: 0, content: 'C#', start: new Date(2001, 1, 1), end: new Date(), className: 'sandor', details_markdown_url: 'details/CSharp.md'},
+    {id: index++, group: 0, content: 'Visual Basic', start: new Date(1996, 1, 1), end: new Date(2001,2, 1), className: 'sandor', details_markdown_url: 'details/Visual Basic.md'},
+
+    {id: index++, group: 0, content: 'WPF (C#)', start: new Date(2007, 1, 1), end: new Date(), className: 'sandor', details_markdown_url: 'details/WPF.md'},
+    {id: index++, group: 0, content: 'Silverlight (C#)', start: new Date(2007, 1, 1), end: new Date(2010, 9, 1), className: 'sandor', details_markdown_url: 'details/Silverlight.md'},
+    {id: index++, group: 0, content: 'WCF', start: new Date(2007, 1, 1), end: new Date(), className: 'sandor', details_markdown_url: 'details/WCF.md'},
+    {id: index++, group: 0, content: 'ASP (Legacy / VB Script)', start: new Date(1996, 12, 1), end: new Date(2002, 1, 1), className: 'sandor', details_markdown_url: 'details/ASP (Legacy).md'},
+
+    {id: index++, group: 0, content: 'ASP.NET (C#)', start: new Date(2002, 1, 1), end: new Date(), className: 'sandor', details_markdown_url: 'details/ASP.NET.md'},
+    {id: index++, group: 0, content: 'ASP.NET MVC (WebApi) C#', start: new Date(2011, 9, 1), end: new Date(), className: 'sandor', details_markdown_url: 'details/ASP.NET MVC (WebApi).md'},
+    {id: index++, group: 0, content: 'SignalR C#/Javascript', start: new Date(2010, 10, 1), end: new Date(), className: 'sandor', details_markdown_url: 'details/SignalR.md'},
+    {id: index++, group: 0, content: 'Windows Services (C#)', start: new Date(2001, 1, 1), end: new Date(), className: 'sandor', details_markdown_url: 'details/Windows Services.md'},
+
+    {id: index++, group: 1, content: 'iOS (Swift)', start: new Date(2014, 1, 1), end: new Date(2015, 6, 1), className: 'sandor'},
+    {id: index++, group: 1, content: 'iOS (Objective-C)', start: new Date(2009, 1, 1), end: new Date(2011, 1, 1), className: 'sandor'},
+
+    {id: index++, group: 1, content: 'Android (Java)', start: new Date(2014, 1, 1), end: new Date(), className: 'sandor'},
+    {id: index++, group: 1, content: 'react-native', start: new Date(2015, 6, 1), end: new Date(), className: 'sandor'},
+
+    {id: index++, group: 2, content: 'Python', start: new Date(2015, 10, 1), end: new Date(), className: 'sandor'},
+    {id: index++, group: 2, content: 'NodeJS', start: new Date(2014, 6, 1), end: new Date(), className: 'sandor'},
+    {id: index++, group: 2, content: 'Socket.io', start: new Date(2016, 1, 1), end: new Date(), className: 'sandor'},
+    {id: index++, group: 2, content: 'ExpressJS', start: new Date(2015, 1, 1), end: new Date(), className: 'sandor'},
+
+    {id: index++, group: 3, content: 'HTML', start: new Date(1996, 7, 1), end: new Date(), className: 'sandor'},
+    {id: index++, group: 3, content: 'CSS', start: new Date(2011, 1, 1), end: new Date(), className: 'sandor'},
+    {id: index++, group: 3, content: 'AngularJS', start: new Date(2013, 1, 1), end: new Date(), className: 'sandor'},
+    {id: index++, group: 3, content: 'Javascript', start: new Date(1996, 7, 1), end: new Date(), className: 'sandor'},
+
+    {id: index++, group: 4, content: 'MS SQL Server (T-SQL)', start: new Date(1995, 1, 1), end: new Date(), className: 'sandor'},
+    {id: index++, group: 4, content: 'Oracle', start: new Date(1996, 5, 1), end: new Date(1998, 12, 1), className: 'sandor'},
+    {id: index++, group: 4, content: 'MS Access', start: new Date(1995, 1, 1), end: new Date(1998, 1, 1), className: 'sandor'},
+    {id: index++, group: 4, content: 'PostgreSQL', start: new Date(2014, 1, 1), end: new Date(), className: 'sandor'},
+    {id: index++, group: 4, content: 'MongoDB', start: new Date(2014, 1, 1), end: new Date(), className: 'sandor'},
+
+
+    {id: index++, group: 2, content: 'C/C++', start: new Date(1991, 1, 1), end: new Date(1997, 7, 1), className: 'sandor'},
+    {id: index++, group: 2, content: '8086 ASM', start: new Date(1991, 1, 1), end: new Date(1993, 1, 1), className: 'sandor'},
+    {id: index++, group: 2, content: 'Java 1.0', start: new Date(1995, 1, 1), end: new Date(1997, 1, 1), className: 'sandor'}
+
+  ]);
+
+  $(document).ready(function() {
+    $('#details_popup').popup();
+    $.fn.popup.defaults.pagecontainer = '.container';
+
+    $('#screen_resolution').append(window.screen.width + ' x ' + window.screen.height);
+
+    var container = document.getElementById('visualization');
+    var options = {
+      groupOrder: function (a, b) {
+        return a.value - b.value;
+      },
+      editable: false,
+      min: new Date(1995, 1, 1),
+      max: new Date()
+    };
+
+    var timeline = new vis.Timeline(container);
+    timeline.setOptions(options);
+    timeline.setGroups(groups);
+    timeline.setItems(items);
+    timeline.on('select', function(properties) {
+      var item = items._data[properties.items[0]];
+
+      console.log('selected item:', item);
+      console.log('fetching markdown: ', item.details_markdown_url);
+
+      if (item.details_markdown_url) {
+        $.get(item.details_markdown_url, function(markdown) {
+          var converter = new Showdown.converter();
+          var html = converter.makeHtml(markdown);
+
+          $('#details_html').empty();
+          $('#details_html').append(html);
+
+          $('#details_popup').popup('show');
+        });
+      }
+    });
+  });
+
+</script>
+</body>
+</html>

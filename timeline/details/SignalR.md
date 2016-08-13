@@ -1,0 +1,6 @@
+# SignalR
+Back in 2013 I was working on a Web, Desktop, Mobile application that needed to perform real-time commiunications between the components.  There was an incumbent named Light Streamer.  After talking to their developer support I was sad to learn that they did not support web-sockets.  In fact I remember the guy asked me to spell it.  However Microsoft had just announced SignalR that fell back through a sweet protocol stack based on the client technology.  So this was chosen.
+
+#### Projects
+* `Fund Accounting Software` - This piece of software is pretty complicated.  The role for SignalR was to facilitate real-time updates to the connected clients.  Remember concurrency issues when two people are looking at the same record at the same time?  SignalR solved this problem by keeping all instances of the data fresh.
+* `Out of Band Processing` - As part of the software above I also used SignalR for triggering server services to process parts of data.  There were some queuing products available at the time but my employer was very limited with the technology stack so I could not use something more appropriate. 
